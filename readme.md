@@ -49,7 +49,7 @@ MS sharepoint document library upload form loader using front end.
       console.log('uploadComplete', i);
     }
   });</code></pre>
-  
+===================================  
 <p><strong>Methods :</strong></p>
 <p>libraryId : Document library GUID - <a href="http://sarangasl.blogspot.co.uk/2009/12/sharepoint-list-guids-how-to-find.html">SharePoint List GUIDs, How to Find?</a></p>
 <p><strong>Callback functions :</strong></p>
