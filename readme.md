@@ -18,6 +18,7 @@ MS sharepoint document library upload form loader.
 
 <p><strong>Advance usage example:</strong></p>
 
+<p>Example 1</p>
 <pre><code>$('#uploaderloder').SPLoadUploadForm({
     libraryId : '{37C213FD-8F80-4DCC-86D1-268D776133B1}',
     formComplete : function (i) {
@@ -27,11 +28,13 @@ MS sharepoint document library upload form loader.
       console.log('uploadComplete', i);
     }
   });</code></pre>
-  
-<p>formComplete : Once the form is loaded into the iframe <br/> uploadComplete : Once file is uploaded it will retrun file name,type..</p>
 
-<p><strong>Advance usage example:</strong></p>
+<p><strong>Callback functions :</strong></p>
+<p>formComplete : Once the form is loaded into the iframe 
+<br/> uploadComplete : Once file is uploaded it will retrun file name,type..</p>
 
+
+<p>Example 2</p>
 <pre><code>$('#uploaderloder').SPLoadUploadForm({
     libraryId : '{37C213FD-8F80-4DCC-86D1-268D776133B1}',
     frameWidth : 450,
