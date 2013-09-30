@@ -8,7 +8,6 @@ MS sharepoint document library upload form loader.
 <pre>
 <code>&lt;script src="js/jquery1.7.2.min.js"&gt;&lt;/script&gt;
 </code>
-
 <code>&lt;script src="js/sp.upload.form.js"&gt;&lt;/script&gt;
 </code>
 </pre>
