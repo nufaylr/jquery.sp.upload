@@ -56,11 +56,12 @@ MS sharepoint document library upload form loader using front end.
 <p>formComplete : Once the form is loaded into the iframe. 
 <br/>uploadComplete : File uploaded function will return the status, file name,type..</p>
 
-Note : if the file is loading outside SharePoint using webdev then add your site path. see the example :
-
+===================================
+<p>Note : if the file is loading outside SharePoint frame using webdev then add your site path.
+see the example :</p>
 <pre><code>$(function() {
     $('#uploaderloder').SPLoadUploadForm({
         libraryId : '{37C213FD-8F80-4DCC-86D1-268D776133B1}',
-        sitePath : '/site/teamSiteNameHere'
+        sitePath : '//domain.com/site/teamSiteNameHere'
     });
 });</code></pre>
