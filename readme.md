@@ -13,7 +13,7 @@ MS sharepoint document library upload form loader.
 });</code></pre>
 
 <p><strong>Method :</strong></p>
-<p>Document library GUID : {37C213FD-8F80-4DCC-86D1-268D776133B1}</p>
+<p>libraryId : Document library GUID</p>
 
 
 <p><strong>Advance usage example:</strong></p>
@@ -27,4 +27,24 @@ MS sharepoint document library upload form loader.
       console.log('uploadComplete', i);
     }
   });</code></pre>
+  
+<p><strong>Method :</strong></p>
+<p>formComplete : Once the form is loaded into the iframe</p>
+<p>uploadComplete : Once file is uploaded it will retrun file name,type..</p>
 
+<p>strong>Some other method :</strong></p>
+<pre><code>$('#uploaderloder').SPLoadUploadForm({
+    libraryId : '{37C213FD-8F80-4DCC-86D1-268D776133B1}',
+    frameWidth : 450,
+    frameHeight : 130,
+    styleClass : 'formstyle',
+    buttonColor : '#1ABC9C',
+    formBackground : '#E3E3E3',
+    overwrite : false,
+    formComplete : function (i) {
+     console.log('formcomplete', i);
+    },
+    uploadComplete : function (i) {
+      console.log('uploadComplete', i);
+    }
+  });</code></pre>
