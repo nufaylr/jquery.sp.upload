@@ -21,7 +21,7 @@ MS sharepoint document library upload form loader using front end.
 
 <p><strong>Advance usage example:</strong></p>
 
-<p>Example 1</p>
+<p>Example 1 -  callback functions</p>
 <pre><code>$('#uploaderloder').SPLoadUploadForm({
     libraryId : '{37C213FD-8F80-4DCC-86D1-268D776133B1}',
     formComplete : function (i) {
