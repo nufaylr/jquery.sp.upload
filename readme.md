@@ -1,7 +1,7 @@
 Sharepoint Upload Form Loader
 =============================
 
-MS sharepoint document library upload form loader.
+MS sharepoint document library upload form loader using front end.
 
 <p><strong>Simple usage example:</strong></p>
 
