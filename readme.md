@@ -10,11 +10,11 @@ MS sharepoint document library upload form loader using front end.
 &lt;script src="js/jquery.sp.upload.js"&gt;&lt;/script&gt;</code></pre>
 
 <p>Body</p>
-<pre><code>&lt;div id="uploaderloder"&gt;&lt;div&gt;</pre>
+<pre><code>&lt;div id="UploadPlaceHolder"&gt;&lt;div&gt;</pre>
 
 <p>In Document ready</p>
 <pre><code>$(function() {
-    $('#uploaderloder').SPLoadUploadForm({
+    $('#UploadPlaceHolder').SPLoadUploadForm({
         libraryId : '{37C213FD-8F80-4DCC-86D1-268D776133B1}'
     });
 });</code></pre>
