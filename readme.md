@@ -50,8 +50,10 @@ MS sharepoint document library upload form loader using front end.
     }
   });</code></pre>
 ===================================  
-<p><strong>Methods :</strong></p>
+<p><strong>Properties :</strong></p>
 <p>libraryId : Document library GUID - <a href="http://sarangasl.blogspot.co.uk/2009/12/sharepoint-list-guids-how-to-find.html">SharePoint List GUIDs, How to Find?</a></p>
+<p>frameWidth ,frameHeight, styleClass, styleClass, buttonColor, formBackground, overwrite</p>
+
 <p><strong>Callback functions :</strong></p>
 <p>formComplete : Once the form is loaded into the iframe. 
 <br/>uploadComplete : File uploaded function will return the status, file name,type..</p>
