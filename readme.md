@@ -12,9 +12,6 @@ MS sharepoint document library upload form loader.
     libraryId : '{37C213FD-8F80-4DCC-86D1-268D776133B1}'
 });</code></pre>
 
-<p><strong>Method :</strong></p>
-<p>libraryId : Document library GUID</p>
-
 
 <p><strong>Advance usage example:</strong></p>
 
@@ -28,10 +25,6 @@ MS sharepoint document library upload form loader.
       console.log('uploadComplete', i);
     }
   });</code></pre>
-
-<p><strong>Callback functions :</strong></p>
-<p>formComplete : Once the form is loaded into the iframe. 
-<br/>uploadComplete : Once file is uploaded it will retrun file name,type..</p>
 
 
 <p>Example 2</p>
@@ -50,3 +43,9 @@ MS sharepoint document library upload form loader.
       console.log('uploadComplete', i);
     }
   });</code></pre>
+  
+<p><strong>Methods :</strong></p>
+<p>libraryId : Document library GUID</p>
+<p><strong>Callback functions :</strong></p>
+<p>formComplete : Once the form is loaded into the iframe. 
+<br/>uploadComplete : Once file is uploaded it will retrun file name,type..</p>
