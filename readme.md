@@ -28,7 +28,7 @@ MS sharepoint document library upload form loader.
     }
   });</code></pre>
   
-<p><strong>Method :</strong></p>
+<p><strong>Methods :</strong></p>
 <p>formComplete : Once the form is loaded into the iframe <br/> uploadComplete : Once file is uploaded it will retrun file name,type..</p>
 <p>strong>Some other method :</strong></p>
 <pre><code>$('#uploaderloder').SPLoadUploadForm({
