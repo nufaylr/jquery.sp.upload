@@ -14,9 +14,9 @@ MS sharepoint document library upload form loader using front end.
 
 <p>In Document ready</p>
 <pre><code>$(function() {
-$('#uploaderloder').SPLoadUploadForm({
-    libraryId : '{37C213FD-8F80-4DCC-86D1-268D776133B1}'
-});
+    $('#uploaderloder').SPLoadUploadForm({
+        libraryId : '{37C213FD-8F80-4DCC-86D1-268D776133B1}'
+    });
 });</code></pre>
 
 
