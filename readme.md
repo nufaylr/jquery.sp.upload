@@ -5,10 +5,10 @@ MS sharepoint document library upload form loader.
 
 <p><strong>Simple usage example:</strong></p>
 
-<pre><code>
+<pre>
 <script src="js/jquery1.7.2.min.js" type="text/javascript"></script>
 <script src="js/sp.upload.form.js" type="text/javascript"></script>
-</code></pre>
+</pre>
 
 
 <pre><code>
