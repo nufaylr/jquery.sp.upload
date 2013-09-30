@@ -22,7 +22,7 @@ MS sharepoint document library upload form loader using front end.
 <p><strong>Advance usage example:</strong></p>
 
 <p>Example 1 -  callback functions</p>
-<pre><code>$('#uploaderloder').SPLoadUploadForm({
+<pre><code>$('#UploadPlaceHolder').SPLoadUploadForm({
     libraryId : '{37C213FD-8F80-4DCC-86D1-268D776133B1}',
     formComplete : function (i) {
      console.log('formcomplete', i);
@@ -34,7 +34,7 @@ MS sharepoint document library upload form loader using front end.
 
 
 <p>Example 2</p>
-<pre><code>$('#uploaderloder').SPLoadUploadForm({
+<pre><code>$('#UploadPlaceHolder').SPLoadUploadForm({
     libraryId : '{37C213FD-8F80-4DCC-86D1-268D776133B1}',
     frameWidth : 450,
     frameHeight : 130,
@@ -51,7 +51,7 @@ MS sharepoint document library upload form loader using front end.
   });</code></pre>
   
 <p><strong>Methods :</strong></p>
-<p>libraryId : Document library GUID</p>
+<p>libraryId : Document library GUID - <a href="http://sarangasl.blogspot.co.uk/2009/12/sharepoint-list-guids-how-to-find.html">SharePoint List GUIDs, How to Find?</a></p>
 <p><strong>Callback functions :</strong></p>
 <p>formComplete : Once the form is loaded into the iframe. 
 <br/>uploadComplete : File uploaded function will return the status, file name,type..</p>
@@ -60,7 +60,7 @@ MS sharepoint document library upload form loader using front end.
 <p>Note : if the file is loading outside SharePoint frame using webdev then add your site path.
 see the example :</p>
 <pre><code>$(function() {
-    $('#uploaderloder').SPLoadUploadForm({
+    $('#UploadPlaceHolder').SPLoadUploadForm({
         libraryId : '{37C213FD-8F80-4DCC-86D1-268D776133B1}',
         sitePath : '//domain.com/site/teamSiteNameHere'
     });
