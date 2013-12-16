@@ -1,6 +1,6 @@
-/*! MS Sharepoint Upload Form Loader  - v0.1 - 2013-09-26
-* Original author : @nufaylr
-* Licensed under the MIT license
+/*! Sherpoint Upload Form Loader  - v0.1 - 2013-09-26
+* http://nufayl.me/
+* Orginal Author : Nufayl Razick;
 */
 
 ;(function($) {
@@ -10,7 +10,8 @@
     // Defualt settings 
     var settings = $.extend({
         libraryId : null,
-        sitePath : '//'+window.location.host+_spPageContextInfo.webServerRelativeUrl,
+        /*sitePath : '//'+window.location.host+_spPageContextInfo.webServerRelativeUrl,*/
+        sitePath : '',
         frameWidth : 450,
         frameHeight : 130,
         styleClass : 'formstyle',
@@ -19,7 +20,8 @@
         formBackground : '#FFF',
         overwrite : false,
         formComplete  : null,
-        uploadComplete : null
+        uploadComplete : null,
+        validate : null
     },  options);
 
 
@@ -33,7 +35,7 @@
     };
 
 
-    // Sharepoint document library supporting file formats ** Add if necessary.
+    // Sherpoint document libray supporing image formats so far ** not sure about this it
     var _fileTypes = {
         'bmp': 'bmp',
         'gif': 'gif',
@@ -54,22 +56,27 @@
     };
 
 
-    // File meta data object to return 
+    // File meta data object to retrun 
     var _uploadMetaData = {
         status : undefined,
         fileName : undefined,
         fileType : undefined,
         image : {
-                width : 0,
-                height : 0
+            width : 0,
+            height : 0
         } 
     };
 
-    // Rewrighting CSS
+    // Rewrighting the css
     var _browserPaddingFix_B = '0px';
     var _browserPaddingFix_T = '0px';
 
-    if ( ! $.browser.msie ) {
+    // Detecting the browser
+    var N= navigator.appName, ua= navigator.userAgent, tem;
+    var browser= ua.match(/(opera|chrome|safari|firefox|msie)\/?\s*(\.?\d+(\.\d+)*)/i);
+    if(browser && (tem= ua.match(/version\/([\.\d]+)/i))!= null) browser[2]= tem[1]; browser= browser? [browser[1], browser[2]]: [N, navigator.appVersion,'-?'];
+
+    if ( browser[0] != 'MSIE') {
       _browserPaddingFix_B = '0.4em';
       _browserPaddingFix_T = '0.1em';
     }
@@ -96,7 +103,7 @@
                +'</style>';
 
 
-    // This
+    // Iframe and the plugin attaced ID's
     var _uploadFrom = this;
     var _iframeId = 'iframe_'+_uploadFrom.attr('id');
 
@@ -105,7 +112,7 @@
     if( settings.libraryId != null ){
       
 
-      if ( $.browser.msie ) {
+      if ( browser[0] == 'MSIE') {
         var _ieWidthFix = settings.frameWidth + 0;
         settings.frameWidth = _ieWidthFix;
       }
@@ -166,13 +173,13 @@
         var _specialCharactorError = false;
 
 
-        /* iframe loading */
+        /* On upload form iframe loading */
         _iframe.load(function(){
 
             var _iframeWorkspaceID = _iframe.contents();
            _iframeWorkspaceID.find('head').append(_css);        
 
-           // Checking for iframe load count
+           // Checking for ifram load count
             if( _hiddenFormLoop.val() == 1 ){
               _specialCharactorError = true;
             } else {
@@ -207,8 +214,12 @@
                   }
                 }
 
-                _destination = _iframeWorkspaceID.find( '#destination' ).val();              
-                
+                _destination = _iframeWorkspaceID.find( '#destination' ).val();
+
+                // validate
+                _iframeWorkspaceID.find('#ctl00_PlaceHolderMain_UploadDocumentSection_ctl03_InputFile').change(function(){
+                  settings.validate.call(_formInner, $(this).val());
+                });
 
                 // Upload form button click event
                 _iframeWorkspaceID.find('#ctl00_PlaceHolderMain_ctl03_RptControls_btnOK').on("click",function (){                  
@@ -220,16 +231,19 @@
                 });
 
 
-                // After upload form button clicked.
-                // iframe reloads. 
+                // After upload form button click event iframe reloads it triggers from s 
                 if(_reloadStatus == 1){
-                  UploadControler($('#hiddenDestination').val(),$('#hiddenFileName').val());                                                   
+                  var _fileNameIEFix = $('#hiddenFileName').val().replace(/^.*[\\\/]/, '');
+                  if ( browser[0] == 'MSIE') {
+                    _fileNameIEFix = $('#hiddenFileName').val().replace(/^.*[\\\/]/, '');
+                  }
+                  UploadControler($('#hiddenDestination').val(),_fileNameIEFix);                                                              
                 }
               
 
             } else {
 
-              /* If form isn't loading or image is exisiting */
+              /* If form isn't loading or image is exisiting then following block will exicted*/
               var _getMessage = _iframeWorkspaceID.find('#ctl00_PlaceHolderMain_LabelMessage').text();
               _iframeWorkspaceID.find( 'body' ).empty();
 
@@ -253,7 +267,7 @@
                     id : 'reloadFrame',
                     href : '#'
                   }).click(function() {
-                    // Resetting the form hidden value into 0
+                    // Reseting the form reloader and the hidden value into 0
                     _reloadStatus = 0;
                     _specialCharactorError = false;
                     $('#hiddenFormCount').val('1');
@@ -273,12 +287,20 @@
 
 
 
-        // UploadControler function runs on onlcik form button
+        // UploadControler Function runs on onlcik of upload form button
         function UploadControler (destination,file) {
 
             if(destination != undefined && file != undefined){
+
+                function CasheCleaner(){
+                    var e=new Date;var t=e.getMonth()+1;var n=e.getDate();var r=e.getFullYear();var i=e.getHours();
+                    var s=e.getMinutes();var o=e.getSeconds();
+                    var u=""+t+""+n+""+r+""+i+""+s+""+o+"";var a="?cimg="+u+"";
+                  return a;
+                }
+
                 var _imgFileType = file.split('.')[1].toLowerCase();
-                var _destinationPath = '//'+window.location.host+''+destination+'/'+file+'';          
+                var _destinationPath = '//'+window.location.host+''+destination+'/'+file+''+CasheCleaner()+'';          
               
                 var _iframeSuccess = _iframe.contents();
                     _iframeSuccess.find('body').attr('onload',' ');
@@ -299,11 +321,14 @@
                   });
 
                   _uploadFrom.append(_imageLoadContainer);
-
+                  /*_uploadMetaData.image.width = $( this ).width();
+                  _uploadMetaData.image.height = $( this ).height();*/
+                  
                   $( "#tempFileLoader" ).load(function() {
                       _uploadMetaData.image.width = $( this ).width();
                       _uploadMetaData.image.height = $( this ).height();
                   });
+                  
 
                 } else {
 
